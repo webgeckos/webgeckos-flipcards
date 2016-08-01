@@ -51,20 +51,23 @@ require_once(plugin_dir_path(__FILE__) . '/widgets/geckos_flipcards_widget.php')
 /*
     2. ENQUEUE SCRIPTS
 */
-
-function geckos_add_scripts(){
-  wp_enqueue_style('geckos-style', plugins_url('/css/geckos-style.css', __FILE__) );
-  wp_enqueue_script('geckos-scripts', plugin_dir_url(__FILE__) . 'js/geckos-scripts.js', array('jquery'));
+if( ! function_exists( 'geckos_add_scripts' ) ) {
+	function geckos_add_scripts(){
+	  wp_enqueue_style('geckos-style', plugins_url('/css/geckos-style.css', __FILE__) );
+	  wp_enqueue_script('geckos-scripts', plugin_dir_url(__FILE__) . 'js/geckos-scripts.js', array('jquery'));
+	}
 }
 
-function geckos_admin_scripts() {
-		wp_enqueue_script('media-upload'); // script already registered in WP, needs to be enqueued
-		wp_enqueue_script('thickbox'); // script already registered in WP, needs to be enqueued
-		wp_enqueue_script('upload_media', plugin_dir_url(__FILE__) . 'js/geckos-upload-media.js', array('jquery'));
-    wp_enqueue_script( 'wp-color-picker-alpha', plugin_dir_url(__FILE__) . 'js/wp-color-picker-alpha.js', array( 'wp-color-picker' ) );
-
-		wp_enqueue_style('thickbox'); // styles for media upload
-    wp_enqueue_style( 'wp-color-picker' ); // styles for color picker
+if( ! function_exists( 'geckos_admin_scripts' ) ) {
+	function geckos_admin_scripts() {
+			wp_enqueue_script('media-upload'); // script already registered in WP, needs to be enqueued
+			wp_enqueue_script('thickbox'); // script already registered in WP, needs to be enqueued
+			wp_enqueue_script('upload_media', plugin_dir_url(__FILE__) . 'js/geckos-upload-media.js', array('jquery'));
+	    wp_enqueue_script( 'wp-color-picker-alpha', plugin_dir_url(__FILE__) . 'js/wp-color-picker-alpha.js', array( 'wp-color-picker' ) );
+	
+			wp_enqueue_style('thickbox'); // styles for media upload
+	    wp_enqueue_style( 'wp-color-picker' ); // styles for color picker
+	}
 }
 
 /*
